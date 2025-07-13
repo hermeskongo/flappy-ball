@@ -3,7 +3,7 @@
 Un petit jeu **Flappy Bird** stylisé en **dark, neon & robotic**, développé en React + Vite + Tailwind CSS.  
 ✅ Responsive, best score sauvegardé, fond animé, musique électro/techno et déploiement sur GitHub Pages.
 
-![screenshot](./public/screenshot.png) <!-- tu peux mettre un screenshot -->
+![screenshot](./public/image.png) <!-- tu peux mettre un screenshot -->
 
 ---
 
