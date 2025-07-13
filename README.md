@@ -3,7 +3,7 @@
 Un petit jeu **Flappy Bird** stylisé en **dark, neon & robotic**, développé en React + Vite + Tailwind CSS.  
 ✅ Responsive, best score sauvegardé, fond animé, musique électro/techno et déploiement sur GitHub Pages.
 
-![screenshot](./public/image.png) <!-- tu peux mettre un screenshot -->
+![screenshot](./public/image.png)
 
 ---
 
@@ -34,7 +34,7 @@ Un petit jeu **Flappy Bird** stylisé en **dark, neon & robotic**, développé e
 
 ```bash
 # Cloner le projet
-git clone https://github.com/tonpseudo/flappy-neon.git
+git clone https://github.com/hermeskongo/flappy-neon.git
 cd flappy-neon
 
 # Installer les dépendances
