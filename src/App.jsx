@@ -5,7 +5,9 @@ export default function FlappyBirdGame() {
   const [velocity, setVelocity] = useState(0);
   const [pipes, setPipes] = useState([]);
   const [score, setScore] = useState(0);
-  const [SPEED, setSpeed] = useState(5)
+  const [SPEED, setSpeed] = useState(5);
+  const [GRAVITY, setGravity] = useState(.5);
+  const [JUMP_STRENGTH, setJumpStrength] = useState(-5)
   const [bestScore, setBestScore] = useState(
     parseInt(localStorage.getItem('bestScore')) || 0
   );
@@ -18,8 +20,6 @@ export default function FlappyBirdGame() {
   const GAME_WIDTH = Math.min(window.innerWidth, 800);
   const PIPE_WIDTH = 50;
   const GAP_HEIGHT = 150;
-  const GRAVITY = 0.5;
-  const JUMP_STRENGTH = -6;
 
   useEffect(() => { gameOverRef.current = gameOver; }, [gameOver]);
 
@@ -39,6 +39,8 @@ export default function FlappyBirdGame() {
     setScore(0);
     setGameOver(false);
     setSpeed(5)
+    setGravity(.5)
+    setJumpStrength(-5)
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play();
@@ -53,6 +55,8 @@ export default function FlappyBirdGame() {
     setBirdY(250);
     setVelocity(0);
     setSpeed(5)
+    setGravity(.5)
+    setJumpStrength(-5)
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play();
@@ -136,12 +140,13 @@ export default function FlappyBirdGame() {
   }, [gameOver, score, bestScore]);
 
   useEffect(() => {
-    let interval = setInterval(() => {
-      setSpeed((s) => s+0.05)
-    }, 800);
-
-    return () => clearInterval(interval)
-  }, [SPEED])
+      if (score % 100 === 0 && score !== 0) { 
+        setSpeed(s => Math.min(s + 0.3, 15));
+        setGravity(g => Math.min(g + 0.05, .8));
+        setJumpStrength(j => Math.max(j - 0.2, -12));
+      }
+      
+    }, [score]);
 
   return (
     <div
@@ -169,7 +174,7 @@ export default function FlappyBirdGame() {
       </div>
 
       {/* Audio */}
-      <audio ref={audioRef} src="/flappy-js-ai/game.mp3" />
+      <audio ref={audioRef} loop src="/flappy-js-ai/game.mp3" />
 
       <div className="relative max-w-[800px] w-full" style={{ height: GAME_HEIGHT }}>
         {/* Score */}
@@ -223,7 +228,7 @@ export default function FlappyBirdGame() {
         {/* Écran d'accueil */}
         {!started && (
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-neon-blue">
-            <h1 className="text-4xl font-bold mb-4">🚀 Flappy Hermès</h1>
+            <h1 className="text-4xl font-bold mb-4">🚀Flappy * Ball🚀</h1>
             <p className="mb-4">Clique ou appuie sur espace pour sauter</p>
             <button
               onClick={startGame}

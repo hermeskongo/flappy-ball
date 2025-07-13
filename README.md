@@ -1,4 +1,4 @@
-# 🚀 Flappy Neon
+# 🚀 Flappy Ball
 
 Un petit jeu **Flappy Bird** stylisé en **dark, neon & robotic**, développé en React + Vite + Tailwind CSS.  
 ✅ Responsive, best score sauvegardé, fond animé, musique électro/techno et déploiement sur GitHub Pages.
@@ -34,8 +34,8 @@ Un petit jeu **Flappy Bird** stylisé en **dark, neon & robotic**, développé e
 
 ```bash
 # Cloner le projet
-git clone https://github.com/hermeskongo/flappy-js-ai.git
-cd flappy-neon
+git clone https://github.com/hermeskongo/flappy-ball.git
+cd flappy-ball
 
 # Installer les dépendances
 npm install
