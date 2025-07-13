@@ -174,7 +174,7 @@ export default function FlappyBirdGame() {
       </div>
 
       {/* Audio */}
-      <audio ref={audioRef} loop src="/flappy-js-ai/game.mp3" />
+      <audio ref={audioRef} loop src="/flappy-ball/game.mp3" />
 
       <div className="relative max-w-[800px] w-full" style={{ height: GAME_HEIGHT }}>
         {/* Score */}
