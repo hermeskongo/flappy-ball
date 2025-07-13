@@ -27,8 +27,6 @@ export default function FlappyBirdGame() {
     if (!started) return; // ignore jump if not started
     if (!gameOverRef.current) {
       setVelocity(JUMP_STRENGTH);
-    } else {
-      restartGame();
     }
   }
 
