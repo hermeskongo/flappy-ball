@@ -5,7 +5,7 @@ export default function FlappyBirdGame() {
   const [velocity, setVelocity] = useState(0);
   const [pipes, setPipes] = useState([]);
   const [score, setScore] = useState(0);
-  const [SPEED, setSpeed] = useState(3)
+  const [SPEED, setSpeed] = useState(5)
   const [bestScore, setBestScore] = useState(
     parseInt(localStorage.getItem('bestScore')) || 0
   );
@@ -18,8 +18,8 @@ export default function FlappyBirdGame() {
   const GAME_WIDTH = Math.min(window.innerWidth, 800);
   const PIPE_WIDTH = 50;
   const GAP_HEIGHT = 150;
-  const GRAVITY = 0.6;
-  const JUMP_STRENGTH = -8;
+  const GRAVITY = 0.5;
+  const JUMP_STRENGTH = -6;
 
   useEffect(() => { gameOverRef.current = gameOver; }, [gameOver]);
 
@@ -38,7 +38,7 @@ export default function FlappyBirdGame() {
     setPipes([]);
     setScore(0);
     setGameOver(false);
-    setSpeed(3)
+    setSpeed(5)
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play();
@@ -52,7 +52,7 @@ export default function FlappyBirdGame() {
     setPipes([]);
     setBirdY(250);
     setVelocity(0);
-    setSpeed(3)
+    setSpeed(5)
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play();
@@ -137,8 +137,8 @@ export default function FlappyBirdGame() {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      setSpeed((s) => s+0.001)
-    }, 1500);
+      setSpeed((s) => s+0.05)
+    }, 800);
 
     return () => clearInterval(interval)
   }, [SPEED])
@@ -169,7 +169,7 @@ export default function FlappyBirdGame() {
       </div>
 
       {/* Audio */}
-      <audio ref={audioRef} loop src="../public/game.mp3" />
+      <audio ref={audioRef} src="/flappy-js-ai/game.mp3" />
 
       <div className="relative max-w-[800px] w-full" style={{ height: GAME_HEIGHT }}>
         {/* Score */}
@@ -182,7 +182,7 @@ export default function FlappyBirdGame() {
         {/* Bird avec glow */}
         {started && (
           <div
-            className="absolute bg-neon-pink rounded shadow-lg"
+            className="absolute bg-neon-yellow rounded shadow-lg"
             style={{
               top: birdY,
               left: 70,
