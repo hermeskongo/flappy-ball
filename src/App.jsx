@@ -137,8 +137,10 @@ export default function FlappyBirdGame() {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      setSpeed((s) => s+0.0005)
+      setSpeed((s) => s+0.001)
     }, 1500);
+
+    return () => clearInterval(interval)
   }, [SPEED])
 
   return (
